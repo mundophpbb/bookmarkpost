@@ -1,0 +1,7 @@
+<!-- IF S_USER_LOGGED_IN and postrow.U_POST_BOOKMARK -->
+<span class="bookmarkpost-author-action">
+    <a class="button button-icon-only bookmarkpost" href="{postrow.U_POST_BOOKMARK}" title="{postrow.L_BOOKMARK_POST}" aria-label="{postrow.L_BOOKMARK_POST}" data-ajax="mundophpbb.bookmarkpost" data-bookmarked-label="{L_POST_BOOKMARKED}">
+        <i class="icon fa-<!-- IF postrow.S_BOOKMARKED_POST -->star<!-- ELSE -->star-o<!-- ENDIF --> fa-fw" aria-hidden="true"></i><span class="sr-only">{postrow.L_BOOKMARK_POST}</span>
+    </a>
+</span>
+<!-- ENDIF -->

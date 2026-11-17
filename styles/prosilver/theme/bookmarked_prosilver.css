@@ -1,0 +1,134 @@
+.bookmarkpost-topic-indicator,
+.bookmarkpost-forum-indicator {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	margin-right: 4px;
+	color: #d9932f;
+}
+
+
+.bookmarkpost .icon.fa-star,
+.bookmarkpost-topic-indicator .icon,
+.bookmarkpost-forum-indicator .icon,
+.bookmarkpost-ucp-bookmarkicon .icon {
+	color: #d9932f;
+}
+
+.bookmarkpost-ucp-list {
+	margin: 10px 0 0;
+}
+
+.bookmarkpost-ucp-row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 14px;
+	padding: 10px 12px;
+	margin-bottom: 8px;
+	border: 1px solid #d8e2ea;
+	border-radius: 4px;
+	background: #f8fbfd;
+}
+
+.bookmarkpost-ucp-row:hover {
+	background: #f2f8fc;
+	border-color: #cbd9e4;
+}
+
+.bookmarkpost-ucp-main {
+	min-width: 0;
+	flex: 1 1 auto;
+}
+
+.bookmarkpost-ucp-title {
+	display: inline-block;
+	margin-bottom: 4px;
+	line-height: 1.3;
+	word-break: break-word;
+}
+
+.bookmarkpost-ucp-title .post-icon {
+	vertical-align: text-bottom;
+	margin-right: 4px;
+}
+
+.bookmarkpost-ucp-meta {
+	color: #5f6b77;
+	font-size: .92em;
+	line-height: 1.35;
+}
+
+.bookmarkpost-ucp-mark {
+	flex: 0 0 auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 28px;
+}
+
+.bookmarkpost-ucp-mark input[type="checkbox"] {
+	transform: scale(1.05);
+}
+
+.bookmarkpost-ucp-actions {
+	margin-top: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	flex-wrap: wrap;
+}
+
+.bookmarkpost-ucp-actions .button2 {
+	padding: 4px 10px;
+}
+
+@media (max-width: 700px) {
+	.bookmarkpost-ucp-row {
+		padding: 10px;
+		gap: 10px;
+	}
+
+	.bookmarkpost-ucp-actions {
+		align-items: flex-start;
+	}
+}
+
+
+/* Keep the action consistent with the native prosilver post toolbar. */
+.post-buttons .bookmarkpost .fa-star,
+.bookmarkpost-topic-indicator .icon,
+.bookmarkpost-forum-indicator .icon {
+	color: #d9932f;
+}
+
+.post-buttons .bookmarkpost:focus-visible {
+	outline: 2px solid currentColor;
+	outline-offset: 2px;
+}
+
+/* Align the bookmark control with the author and posting date. */
+.postbody p.author .bookmarkpost-author-action {
+	display: inline-flex;
+	align-items: center;
+	vertical-align: middle;
+	margin-left: 5px;
+	white-space: nowrap;
+}
+
+.postbody p.author .bookmarkpost-author-action .bookmarkpost {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 23px;
+	height: 22px;
+	padding: 0;
+	margin: 0;
+	line-height: 1;
+	vertical-align: middle;
+}
+
+.postbody p.author .bookmarkpost-author-action .bookmarkpost .icon {
+	margin: 0;
+}

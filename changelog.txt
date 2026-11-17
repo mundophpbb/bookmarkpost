@@ -1,0 +1,11 @@
+1.0.9 - 2026-11-16
+- Cast user IDs to integers in bookmark SQL conditions and joins.
+- Build bookmark subqueries with the phpBB DBAL query builder.
+- Use integer IDs and DBAL sql_in_set() when deleting user bookmarks.
+- Normalize PHP, Composer JSON and CSS indentation to tabs.
+- Normalize the Composer proprietary license identifier without relicensing.
+- Add a license notice preserving the original SiteSplat declaration.
+- Add installation, update and usage documentation.
+
+1.0.8
+- Version present in the supplied source archive; no historical changelog supplied.

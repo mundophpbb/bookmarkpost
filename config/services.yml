@@ -1,0 +1,32 @@
+imports:
+    - { resource: tables.yml }
+
+services:
+    mundophpbb.bookmarkpost.listener:
+        class: mundophpbb\bookmarkpost\event\main_listener
+        arguments:
+            - '@template'
+            - '@user'
+            - '@request'
+            - '@dbal.conn'
+            - '@auth'
+            - '@controller.helper'
+            - '%tables.posts%'
+            - '%mundophpbb.bookmarkpost.tables.post_bookmarks%'
+            - '%core.root_path%'
+            - '%core.php_ext%'
+        tags:
+            - { name: event.listener }
+
+    mundophpbb.bookmarkpost.controller:
+        class: mundophpbb\bookmarkpost\controller\controller
+        arguments:
+            - '@user'
+            - '@dbal.conn'
+            - '@auth'
+            - '@request'
+            - '@controller.helper'
+            - '%tables.posts%'
+            - '%mundophpbb.bookmarkpost.tables.post_bookmarks%'
+            - '%core.root_path%'
+            - '%core.php_ext%'
