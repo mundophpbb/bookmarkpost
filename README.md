@@ -1,6 +1,8 @@
 # BookmarkPost
 
-Version: 1.0.9
+Version: 1.0.10
+
+Maintained by mundophpBB.
 
 Bookmark individual posts and manage saved posts from the User Control Panel.
 Includes English and Brazilian Portuguese translations and prosilver styling.
@@ -33,7 +35,7 @@ topic lists show bookmark counts.
 
 ## License
 
-The supplied original code declares a proprietary SiteSplat license. See
+The original code declares a proprietary license. See
 `license.txt`. This maintenance release does not change the original license.
 A license notice is not evidence of eligibility for the phpBB extension
 database; resolve the original license terms before submission.

@@ -4,6 +4,7 @@
 * Bookmark Post
 *
 * @copyright (c) 2016 SiteSplat All rights reserved
+* Maintained by mundophpBB.
 * @license Proprietary
 *
 */

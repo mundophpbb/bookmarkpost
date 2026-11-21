@@ -4,6 +4,7 @@
 * Bookmark Post
 *
 * @copyright (c) 2016 SiteSplat All rights reserved
+* Maintained by mundophpBB.
 * @license Proprietary
 *
 */
@@ -32,7 +33,12 @@ class main_module
 			{
 				trigger_error('FORM_INVALID');
 			}
-			$s_hidden_fields = array('unbookmark' => 1);
+			// Preserve the validated form token when submitting the confirmation dialog.
+			$s_hidden_fields = array(
+				'unbookmark' => 1,
+				'creation_time' => $request->variable('creation_time', 0),
+				'form_token' => $request->variable('form_token', ''),
+			);
 			$posts = ($request->is_set_post('p')) ? array_keys($request->variable('p', array(0 => 0))) : array();
 			$url = $this->u_action;
 
@@ -70,13 +76,13 @@ class main_module
 		$phpbb_content_visibility = $phpbb_container->get('content.visibility');
 		$pagination = $phpbb_container->get('pagination');
 		$readable_forums = $phpbb_container->get('auth')->acl_getf('f_read', true);
-		$forum_filter = $db->sql_in_set('p.forum_id', array_keys($readable_forums));
+		$readable_forum_ids = array_map('intval', array_keys($readable_forums));
 
 		$sql = 'SELECT COUNT(pb.post_id) AS num_posts
 				FROM ' . $table_prefix . 'post_bookmarks pb, ' . POSTS_TABLE . ' p
 				WHERE user_id = ' . (int) $user->data['user_id'] . '
 					AND pb.post_id = p.post_id
-					AND ' . $forum_filter . '
+					AND ' . $db->sql_in_set('p.forum_id', $readable_forum_ids, false, true) . '
 					AND ' . $phpbb_content_visibility->get_visibility_sql('post', 0);
 		$result = $db->sql_query($sql);
 		$total_posts = (int) $db->sql_fetchfield('num_posts');
@@ -89,7 +95,7 @@ class main_module
 				FROM ' . $table_prefix . 'post_bookmarks pb, ' . POSTS_TABLE . ' p, ' . USERS_TABLE . ' u
 				WHERE pb.user_id = ' . (int) $user->data['user_id'] . '
 					AND pb.post_id = p.post_id
-					AND ' . $forum_filter . '
+					AND ' . $db->sql_in_set('p.forum_id', $readable_forum_ids, false, true) . '
 					AND p.poster_id = u.user_id
 					AND ' . $phpbb_content_visibility->get_visibility_sql('post', 0);
 		$result = $db->sql_query_limit($sql, $config['posts_per_page'], $start);

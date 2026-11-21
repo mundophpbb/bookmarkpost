@@ -3,6 +3,7 @@
 *
 * Bookmark Post
 * @copyright (c) 2016 SiteSplat All rights reserved
+* Maintained by mundophpBB.
 * @license Proprietary
 *
 */
@@ -124,18 +125,16 @@ class main_listener implements EventSubscriberInterface
 	{
 		$sql_ary = $event['sql_ary'];
 
-		$bookmark_sql = $this->db->sql_build_query('SELECT', array(
-			'SELECT' => 'pb.post_id',
-			'FROM' => array($this->post_bookmarks_table => 'pb'),
-			'WHERE' => 'pb.user_id = ' . (int) $this->user->data['user_id'],
-		));
-
-		$sql_ary['SELECT'] .= ', (
-			SELECT COUNT(p.post_id)
-			FROM ' . $this->posts_table . ' p
-			WHERE p.forum_id = f.forum_id
-				AND p.post_id IN (' . $bookmark_sql . ')
-		) as bookmarked_posts';
+		$sql_ary['SELECT'] .= ', (' . $this->db->sql_build_query('SELECT', array(
+			'SELECT' => 'COUNT(DISTINCT p.post_id)',
+			'FROM' => array(
+				$this->posts_table => 'p',
+				$this->post_bookmarks_table => 'pb',
+			),
+			'WHERE' => 'p.forum_id = f.forum_id
+				AND pb.post_id = p.post_id
+				AND pb.user_id = ' . (int) $this->user->data['user_id'],
+		)) . ') AS bookmarked_posts';
 
 		$event['sql_ary'] = $sql_ary;
 	}
@@ -163,18 +162,16 @@ class main_listener implements EventSubscriberInterface
 	{
 		$sql_array = $event['sql_array'];
 
-		$bookmark_sql = $this->db->sql_build_query('SELECT', array(
-			'SELECT' => 'pb.post_id',
-			'FROM' => array($this->post_bookmarks_table => 'pb'),
-			'WHERE' => 'pb.user_id = ' . (int) $this->user->data['user_id'],
-		));
-
-		$sql_array['SELECT'] .= ', (
-			SELECT COUNT(p.post_id)
-			FROM ' . $this->posts_table . ' p
-			WHERE p.topic_id = t.topic_id
-				AND p.post_id IN (' . $bookmark_sql . ')
-		) as bookmarked_posts';
+		$sql_array['SELECT'] .= ', (' . $this->db->sql_build_query('SELECT', array(
+			'SELECT' => 'COUNT(DISTINCT p.post_id)',
+			'FROM' => array(
+				$this->posts_table => 'p',
+				$this->post_bookmarks_table => 'pb',
+			),
+			'WHERE' => 'p.topic_id = t.topic_id
+				AND pb.post_id = p.post_id
+				AND pb.user_id = ' . (int) $this->user->data['user_id'],
+		)) . ') AS bookmarked_posts';
 
 		$event['sql_array'] = $sql_array;
 	}

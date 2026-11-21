@@ -4,7 +4,7 @@
 - Use integer IDs and DBAL sql_in_set() when deleting user bookmarks.
 - Normalize PHP, Composer JSON and CSS indentation to tabs.
 - Normalize the Composer proprietary license identifier without relicensing.
-- Add a license notice preserving the original SiteSplat declaration.
+- Add a license notice preserving the original proprietary license declaration.
 - Add installation, update and usage documentation.
 
 1.0.8

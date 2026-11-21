@@ -1,44 +1,44 @@
 
 {
-    "name": "mundophpbb/bookmarkpost",
-    "type": "phpbb-extension",
-    "description": "Allows users to bookmark individual posts and review them from the UCP.",
-    "homepage": "https://github.com/mundophpbb",
-    "version": "1.0.9",
-    "keywords": [
-        "phpbb",
-        "extension",
-        "ucp",
-        "bookmark",
-        "cosmetic",
-        "mundophpbb"
-    ],
-    "license": "@license Proprietary",
-    "authors": [
-        {
-            "name": "MundophpBB",
-            "email": "chicogois@gmail.com",
-            "homepage": "https://mundophpbb.com.br"
-        },
-        {
-            "name": "mundophpbb",
-            "homepage": "https://github.com/mundophpbb",
-            "role": "Adaptation and maintenance"
-        }
-    ],
-    "require": {
-        "php": ">=7.1"
-    },
-    "extra": {
-        "display-name": "BookmarkPost",
-        "soft-require": {
-            "phpbb/phpbb": ">=3.3.0,<4.0.0@dev"
-        },
-        "version-check": {
-            "host": "mundophpbb.com.br",
-            "directory": "/updates",
-            "filename": "bookmarkpost.json",
-            "ssl": true
-        }
-    }
+	"name": "mundophpbb/bookmarkpost",
+	"type": "phpbb-extension",
+	"description": "Allows users to bookmark individual posts and review them from the UCP.",
+	"homepage": "https://github.com/mundophpbb",
+	"version": "1.0.11",
+	"keywords": [
+		"phpbb",
+		"extension",
+		"ucp",
+		"bookmark",
+		"cosmetic",
+		"mundophpbb"
+	],
+	"license": "GPL-2.0-only",
+	"authors": [
+		{
+			"name": "MundophpBB",
+			"email": "chicogois@gmail.com",
+			"homepage": "https://mundophpbb.com.br"
+		},
+		{
+			"name": "mundophpbb",
+			"homepage": "https://github.com/mundophpbb",
+			"role": "Adaptation and maintenance"
+		}
+	],
+	"require": {
+		"php": ">=7.1"
+	},
+	"extra": {
+		"display-name": "Bookmark Post",
+		"soft-require": {
+			"phpbb/phpbb": ">=3.3.0,<4.0.0@dev"
+		},
+		"version-check": {
+			"host": "mundophpbb.com.br",
+			"directory": "/updates",
+			"filename": "bookmarkpost.json",
+			"ssl": true
+		}
+	}
 }
